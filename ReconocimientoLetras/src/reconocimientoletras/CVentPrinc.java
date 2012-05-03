@@ -26,21 +26,88 @@ public class CVentPrinc extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlEntradaDibujo = new javax.swing.JPanel();
+        cmdLimpiar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        pnlEntradaDibujo.setBackground(java.awt.Color.white);
+        pnlEntradaDibujo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlEntradaDibujo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pnlEntradaDibujoMousePressed(evt);
+            }
+        });
+        pnlEntradaDibujo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                pnlEntradaDibujoMouseDragged(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlEntradaDibujoLayout = new javax.swing.GroupLayout(pnlEntradaDibujo);
+        pnlEntradaDibujo.setLayout(pnlEntradaDibujoLayout);
+        pnlEntradaDibujoLayout.setHorizontalGroup(
+            pnlEntradaDibujoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 181, Short.MAX_VALUE)
+        );
+        pnlEntradaDibujoLayout.setVerticalGroup(
+            pnlEntradaDibujoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 151, Short.MAX_VALUE)
+        );
+
+        cmdLimpiar.setText("Limpiar");
+        cmdLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdLimpiarActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("jButton2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(175, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cmdLimpiar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2))
+                    .addComponent(pnlEntradaDibujo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(pnlEntradaDibujo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdLimpiar)
+                    .addComponent(jButton2))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-420)/2, (screenSize.height-347)/2, 420, 347);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLimpiarActionPerformed
+        // TODO add your handling code here:
+        pnlEntradaDibujo.repaint();
+    }//GEN-LAST:event_cmdLimpiarActionPerformed
+
+    private void pnlEntradaDibujoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEntradaDibujoMousePressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_pnlEntradaDibujoMousePressed
+
+    private void pnlEntradaDibujoMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEntradaDibujoMouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlEntradaDibujoMouseDragged
 
     /**
      * @param args the command line arguments
@@ -84,5 +151,8 @@ public class CVentPrinc extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdLimpiar;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JPanel pnlEntradaDibujo;
     // End of variables declaration//GEN-END:variables
 }
