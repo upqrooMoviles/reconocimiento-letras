@@ -13,6 +13,7 @@ public class CVentPrinc extends javax.swing.JFrame {
     /**
      * Creates new form CVentPrinc
      */
+    Dibujo objDibujo = new Dibujo();
     public CVentPrinc() {
         initComponents();
     }
@@ -102,11 +103,12 @@ public class CVentPrinc extends javax.swing.JFrame {
 
     private void pnlEntradaDibujoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEntradaDibujoMousePressed
         // TODO add your handling code here:
-        
+        objDibujo.obtenerCordenadas(evt);
     }//GEN-LAST:event_pnlEntradaDibujoMousePressed
 
     private void pnlEntradaDibujoMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEntradaDibujoMouseDragged
         // TODO add your handling code here:
+        objDibujo.pintar(evt);
     }//GEN-LAST:event_pnlEntradaDibujoMouseDragged
 
     /**
