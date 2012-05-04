@@ -78,18 +78,18 @@ public class Dibujo {
             grafico.drawLine(X, Y, x, y);
             X = x;
             Y = y;
-            if(X<140 && Y<140)
+            if(X<140 && Y<140 && X>0 && Y >0)
                 pixelMap[Y][X] = 1;
         }
     }
 
     public int[][] analizaGrafico() {
         encuentraBordes(140, 140);
-        arriba -= 3;
-        abajo += 3;
-        izquierda-=3;
-        derecha+=3;
-        System.err.println("arriba: " + arriba + "  derecha: " + derecha + "  abajo: " + abajo + "  izquierda " + izquierda);
+        arriba -= 2;
+        abajo += 2;
+        izquierda-=2;
+        derecha+=2;
+        //System.err.println("arriba: " + arriba + "  derecha: " + derecha + "  abajo: " + abajo + "  izquierda " + izquierda);
         pintarBordes();
         creaMatriz();
         return matriz;
@@ -158,8 +158,8 @@ public class Dibujo {
             auxIzq=izquierda;
             for (int j = 0; j < 5; j++) {
                 boolean band = false;
-                for (int k = arriba; k < arriba + intH; k++) {
-                    for (int l = auxIzq; l < auxIzq + intW; l++) {
+                for (int k = arriba; k < arriba + intH+1; k++) {
+                    for (int l = auxIzq; l < auxIzq + intW+1; l++) {
                         if (pixelMap[k][l] != 0) {
 
                             matriz[i][j] = 1;

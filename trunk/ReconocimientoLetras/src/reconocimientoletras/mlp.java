@@ -5,10 +5,9 @@
 package reconocimientoletras;
 
 
-import java.util.Arrays;
+import javax.swing.JOptionPane;
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.learning.SupervisedTrainingElement;
-import org.neuroph.core.learning.TrainingElement;
 import org.neuroph.core.learning.TrainingSet;
 import org.neuroph.nnet.MultiLayerPerceptron;
 import org.neuroph.util.TransferFunctionType;
@@ -31,6 +30,28 @@ public class mlp {
                                                                           1,0,0,0,1,
                                                                           1,0,0,0,1,
                                                                           1,0,0,0,1}, new double[]{0,0,0,0,0}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{0,1,1,0,0, 
+                                                                       0,1,1,0,0, 
+                                                                       0,1,1,0,0, 
+                                                                       0,1,0,1,0, 
+                                                                       1,1,1,1,1, 
+                                                                       1,0,0,0,1, 
+                                                                       1,0,0,0,1}, new double[]{0,0,0,0,0}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{0,0,1,0,0,
+                                                                        0,0,1,0,0,
+                                                                        0,0,1,1,0,
+                                                                        0,0,1,1,0,
+                                                                        0,1,1,1,0,
+                                                                        0,1,1,1,1,
+                                                                        1,0,0,0,1}, new double[]{0,0,0,0,0}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{0,1,1,0,0,
+                                                                        0,1,1,0,0,
+                                                                        0,1,1,1,0,
+                                                                        1,1,0,1,1,
+                                                                        1,1,1,1,1,
+                                                                        1,0,0,0,1,
+                                                                        0,0,0,0,1}, new double[]{0,0,0,0,0}));
+        //****************************************************************************************//
         trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,0, //LETRA B
                                                                           1,0,0,0,1,
                                                                           1,0,0,0,1,
@@ -38,20 +59,86 @@ public class mlp {
                                                                           1,0,0,0,1,
                                                                           1,0,0,0,1,
                                                                           1,1,1,1,0}, new double[]{0,0,0,0,1}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,1,1,
+                                                                        1,1,1,1,1,
+                                                                        1,0,0,0,1,
+                                                                        1,1,0,0,1,
+                                                                        0,1,1,1,1}, new double[]{0,0,0,0,1}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,1,
+                                                                        1,1,1,1,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,1,1,0}, new double[]{0,0,0,0,1}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,0,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,1,1,
+                                                                        1,1,1,1,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,1,1,1,
+                                                                        1,1,1,0,0}, new double[]{0,0,0,0,1}));
+        //**********************************************************************************************//
         trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,1, //LETRA C
                                                                           1,0,0,0,0,
                                                                           1,0,0,0,0,
                                                                           1,0,0,0,0,
                                                                           1,0,0,0,0,
                                                                           1,0,0,0,0,
-                                                                          1,1,1,1,1,}, new double[]{0,0,0,1,0}));
-        /**trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,0, //LETRA D
+                                                                          1,1,1,1,1}, new double[]{0,0,0,1,0}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{0,0,1,1,1,
+                                                                        0,1,1,0,0,
+                                                                        1,1,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,1,1,0,0}, new double[]{0,0,0,1,0}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{0,1,1,0,0,
+                                                                        1,1,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        0,1,1,0,0}, new double[]{0,0,0,1,0}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{0,1,1,0,0,
+                                                                        0,1,0,0,0,
+                                                                        0,1,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        0,1,0,1,1}, new double[]{0,0,0,1,0}));
+        //************************************************************************************************//
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,0, //LETRA D
                                                                           1,0,0,0,1,
                                                                           1,0,0,0,1,
                                                                           1,0,0,0,1,
                                                                           1,0,0,0,1,
                                                                           1,0,0,0,1,
                                                                           1,1,1,1,0}, new double[]{0,0,0,1,1}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,0,
+                                                                        1,0,0,1,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,1,
+                                                                        1,1,1,1,1}, new double[]{0,0,0,1,1}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,0,
+                                                                        1,0,0,1,0,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,1,1,
+                                                                        1,1,1,1,0}, new double[]{0,0,0,1,1}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,0,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,1,
+                                                                        1,0,1,1,0,
+                                                                        1,1,1,0,0}, new double[]{0,0,0,1,1}));
+        //***********************************************************************************************************//
         trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,1, //LETRA E
                                                                           1,0,0,0,0,
                                                                           1,0,0,0,0,
@@ -59,6 +146,29 @@ public class mlp {
                                                                           1,0,0,0,0,
                                                                           1,0,0,0,0,
                                                                           1,1,1,1,1}, new double[]{0,0,1,0,0}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,1,1,1,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,1,1,1,1}, new double[]{0,0,1,0,0}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,1,1,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,1,1,1,1}, new double[]{0,0,1,0,0}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{0,1,1,1,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,1,1,1,1,
+                                                                        1,0,0,0,0,
+                                                                        1,1,1,1,1}, new double[]{0,0,1,0,0}));
+        
+        //*************************************************************************************************************
         trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,1, //LETRA F
                                                                           1,0,0,0,0,
                                                                           1,0,0,0,0,
@@ -66,6 +176,15 @@ public class mlp {
                                                                           1,0,0,0,0,
                                                                           1,0,0,0,0,
                                                                           1,0,0,0,0}, new double[]{0,0,1,0,1}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,1,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,1,1,1,1,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0}, new double[]{0,0,1,0,1}));
+        
+        //*************************************************************************************************************
         trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,1, //LETRA G
                                                                           1,0,0,0,0,
                                                                           1,0,0,0,0,
@@ -73,6 +192,21 @@ public class mlp {
                                                                           1,0,0,0,1,
                                                                           1,0,0,0,1,
                                                                           1,1,1,1,1}, new double[]{0,0,1,1,0}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{0,1,1,1,1,
+                                                                        1,1,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,1,1,1,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,1,
+                                                                        1,1,0,1,1}, new double[]{0,0,1,1,0}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{0,1,1,1,1,
+                                                                        1,1,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,1,1,1,0,
+                                                                        1,0,0,1,1,
+                                                                        1,0,0,0,1,
+                                                                        0,1,1,1,1}, new double[]{0,0,1,1,0}));
+        //**************************************************************************************************************
         trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,0,0,0,1, //LETRA H
                                                                           1,0,0,0,1,
                                                                           1,0,0,0,1,
@@ -80,6 +214,14 @@ public class mlp {
                                                                           1,0,0,0,1,
                                                                           1,0,0,0,1,
                                                                           1,0,0,0,1}, new double[]{0,0,1,1,1}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,0,0,0,1,
+                                                                        1,0,0,0,1,
+                                                                        1,1,1,1,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,0}, new double[]{0,0,1,1,1}));
+        //**************************************************************************************************************
         trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,1, //LETRA I
                                                                           0,0,1,0,0,
                                                                           0,0,1,0,0,
@@ -87,6 +229,23 @@ public class mlp {
                                                                           0,0,1,0,0,
                                                                           0,0,1,0,0,
                                                                           1,1,1,1,1}, new double[]{0,1,0,0,0}));
+        
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,1,
+                                                                        0,0,1,0,0,
+                                                                        0,0,1,0,0,
+                                                                        0,0,1,0,0,
+                                                                        0,0,1,0,0,
+                                                                        0,0,1,0,0,
+                                                                        0,1,1,1,0}, new double[]{0,1,0,0,0}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,1,
+                                                                        0,1,0,0,0,
+                                                                        0,1,0,0,0,
+                                                                        0,1,0,0,0,
+                                                                        0,1,0,0,0,
+                                                                        0,1,0,0,0,
+                                                                        1,1,1,0,0}, new double[]{0,1,0,0,0}));
+        
+        //**************************************************************************************************************
         trainingSet.addElement(new SupervisedTrainingElement(new double[]{0,1,1,1,1, //LETRA J
                                                                           0,0,0,1,0,
                                                                           0,0,0,1,0,
@@ -94,6 +253,14 @@ public class mlp {
                                                                           0,0,0,1,0,
                                                                           1,0,0,1,0,
                                                                           0,1,1,0,0}, new double[]{0,1,0,0,1}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{0,1,1,1,1,
+                                                                        0,0,1,0,0,
+                                                                        0,0,1,0,0,
+                                                                        0,0,1,0,0,
+                                                                        0,0,1,0,0,
+                                                                        1,0,1,0,0,
+                                                                        1,1,1,0,0}, new double[]{0,1,0,0,1}));
+        //***************************************************************************************************************
         trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,0,0,0,0, //LETRA K
                                                                           1,0,0,0,1,
                                                                           1,0,0,1,0,
@@ -101,13 +268,29 @@ public class mlp {
                                                                           1,1,1,0,0,
                                                                           1,0,0,1,0,
                                                                           1,0,0,0,1}, new double[]{0,1,0,1,0}));
-        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,0,0,0, //LETRA L
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,0,0,1,1,
+                                                                        1,0,1,1,0,
+                                                                        1,1,0,0,0,
+                                                                        1,1,0,0,0,
+                                                                        1,1,1,0,0,
+                                                                        1,0,1,1,0,
+                                                                        1,0,0,1,1}, new double[]{0,1,0,1,0}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,0,0,1,1,
+                                                                        1,0,1,1,0,
+                                                                        1,1,0,0,0,
+                                                                        1,1,1,0,0,
+                                                                        1,0,1,1,0,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,0}, new double[]{0,1,0,1,0}));        
+        //****************************************************************************************************************
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,0,0,0,0, //LETRA L
                                                                           1,0,0,0,0,
                                                                           1,0,0,0,0,
                                                                           1,0,0,0,0,
                                                                           1,0,0,0,0,
                                                                           1,0,0,0,0,
                                                                           1,1,1,1,1}, new double[]{0,1,0,1,1}));
+        //*****************************************************************************************************************
         trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,0,0,0,1, //LETRA M
                                                                           1,1,0,1,1,
                                                                           1,0,1,0,1,
@@ -115,6 +298,28 @@ public class mlp {
                                                                           1,0,0,0,1,
                                                                           1,0,0,0,1,
                                                                           1,0,0,0,1}, new double[]{0,1,1,0,0}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{0,0,0,0,1,
+                                                                        1,1,0,0,1,
+                                                                        1,1,0,1,1,
+                                                                        1,0,1,1,1,
+                                                                        1,0,1,0,1,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0}, new double[]{0,1,1,0,0}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,0,0,0,1,
+                                                                        1,1,0,1,1,
+                                                                        1,1,0,1,1,
+                                                                        1,1,1,1,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,1}, new double[]{0,1,1,0,0}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,0,0,0,1,
+                                                                        1,1,0,1,1,
+                                                                        1,1,1,1,1,
+                                                                        1,0,1,0,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,1,
+                                                                        1,0,0,0,1}, new double[]{0,1,1,0,0}));
+        //******************************************************************************************************************
         trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,0,0,0,1, //LETRA N
                                                                           1,1,0,0,1,
                                                                           1,0,1,0,1,
@@ -198,7 +403,7 @@ public class mlp {
                                                                           0,0,1,0,0,
                                                                           0,0,1,0,0,
                                                                           0,0,1,0,0,
-                                                                          0,0,1,0,0}, new double[]{1,1,0,0,0}));*/
+                                                                          0,0,1,0,0}, new double[]{1,1,0,0,0}));
         trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,1, //LETRA Z
                                                                           0,0,0,0,1,
                                                                           0,0,0,1,0,
@@ -208,12 +413,12 @@ public class mlp {
                                                                           1,1,1,1,1}, new double[]{1,1,0,0,1}));
         System.out.print("Comienza");
         // create multi layer perceptron
-        MultiLayerPerceptron myMlPerceptron = new MultiLayerPerceptron(TransferFunctionType.SIGMOID, 35, 700, 5);
+        MultiLayerPerceptron myMlPerceptron = new MultiLayerPerceptron(TransferFunctionType.SIGMOID, 35, 27, 5);
         // learn the training set
         myMlPerceptron.learnInSameThread(trainingSet);
 
         // test perceptron
-        System.out.println("Testing trained neural network");
+        JOptionPane.showMessageDialog(null, "Entrenamiento Finalizado");
         //testNeuralNetwork(myMlPerceptron, trainingSet);
 
         // save trained neural network
@@ -232,27 +437,27 @@ public class mlp {
         if (res[0]==0 && res[1]==0 && res[2]==0 && res[3]==0 && res[4]==0){mensaje="LETRA A";}
         if (res[0]==0 && res[1]==0 && res[2]==0 && res[3]==0 && res[4]==1){mensaje="LETRA B";}
         if (res[0]==0 && res[1]==0 && res[2]==0 && res[3]==1 && res[4]==0){mensaje="LETRA C";}
-        if (res[0]==0 && res[1]==0 && res[2]==0 && res[3]==1 && res[4]==1){System.out.println("LETRA D");}
-        if (res[0]==0 && res[1]==0 && res[2]==1 && res[3]==0 && res[4]==0){System.out.println("LETRA E");}
-        if (res[0]==0 && res[1]==0 && res[2]==1 && res[3]==0 && res[4]==1){System.out.println("LETRA F");}
-        if (res[0]==0 && res[1]==0 && res[2]==1 && res[3]==1 && res[4]==0){System.out.println("LETRA G");}
-        if (res[0]==0 && res[1]==0 && res[2]==1 && res[3]==1 && res[4]==1){System.out.println("LETRA H");}
-        if (res[0]==0 && res[1]==1 && res[2]==0 && res[3]==0 && res[4]==0){System.out.println("LETRA I");}
-        if (res[0]==0 && res[1]==1 && res[2]==0 && res[3]==0 && res[4]==1){System.out.println("LETRA J");}
-        if (res[0]==0 && res[1]==1 && res[2]==0 && res[3]==1 && res[4]==0){System.out.println("LETRA K");}
-        if (res[0]==0 && res[1]==1 && res[2]==0 && res[3]==1 && res[4]==1){System.out.println("LETRA L");}
-        if (res[0]==0 && res[1]==1 && res[2]==1 && res[3]==0 && res[4]==0){System.out.println("LETRA M");}
-        if (res[0]==0 && res[1]==1 && res[2]==1 && res[3]==0 && res[4]==1){System.out.println("LETRA N");}
-        if (res[0]==0 && res[1]==1 && res[2]==1 && res[3]==1 && res[4]==0){System.out.println("LETRA O");}
-        if (res[0]==0 && res[1]==1 && res[2]==1 && res[3]==1 && res[4]==1){System.out.println("LETRA P");}
-        if (res[0]==1 && res[1]==0 && res[2]==0 && res[3]==0 && res[4]==0){System.out.println("LETRA Q");}
-        if (res[0]==1 && res[1]==0 && res[2]==0 && res[3]==0 && res[4]==1){System.out.println("LETRA R");}
-        if (res[0]==1 && res[1]==0 && res[2]==0 && res[3]==1 && res[4]==1){System.out.println("LETRA T");}
-        if (res[0]==1 && res[1]==0 && res[2]==1 && res[3]==0 && res[4]==0){System.out.println("LETRA U");}
-        if (res[0]==1 && res[1]==0 && res[2]==1 && res[3]==0 && res[4]==1){System.out.println("LETRA V");}
-        if (res[0]==1 && res[1]==0 && res[2]==1 && res[3]==1 && res[4]==0){System.out.println("LETRA W");}
-        if (res[0]==1 && res[1]==0 && res[2]==1 && res[3]==1 && res[4]==1){System.out.println("LETRA X");}
-        if (res[0]==1 && res[1]==1 && res[2]==0 && res[3]==0 && res[4]==0){System.out.println("LETRA Y");}
+        if (res[0]==0 && res[1]==0 && res[2]==0 && res[3]==1 && res[4]==1){mensaje="LETRA D";}
+        if (res[0]==0 && res[1]==0 && res[2]==1 && res[3]==0 && res[4]==0){mensaje="LETRA E";}
+        if (res[0]==0 && res[1]==0 && res[2]==1 && res[3]==0 && res[4]==1){mensaje="LETRA F";}
+        if (res[0]==0 && res[1]==0 && res[2]==1 && res[3]==1 && res[4]==0){mensaje="LETRA G";}
+        if (res[0]==0 && res[1]==0 && res[2]==1 && res[3]==1 && res[4]==1){mensaje="LETRA H";}
+        if (res[0]==0 && res[1]==1 && res[2]==0 && res[3]==0 && res[4]==0){mensaje="LETRA I";}
+        if (res[0]==0 && res[1]==1 && res[2]==0 && res[3]==0 && res[4]==1){mensaje="LETRA J";}
+        if (res[0]==0 && res[1]==1 && res[2]==0 && res[3]==1 && res[4]==0){mensaje="LETRA K";}
+        if (res[0]==0 && res[1]==1 && res[2]==0 && res[3]==1 && res[4]==1){mensaje="LETRA L";}
+        if (res[0]==0 && res[1]==1 && res[2]==1 && res[3]==0 && res[4]==0){mensaje="LETRA M";}
+        if (res[0]==0 && res[1]==1 && res[2]==1 && res[3]==0 && res[4]==1){mensaje="LETRA N";}
+        if (res[0]==0 && res[1]==1 && res[2]==1 && res[3]==1 && res[4]==0){mensaje="LETRA O";}
+        if (res[0]==0 && res[1]==1 && res[2]==1 && res[3]==1 && res[4]==1){mensaje="LETRA P";}
+        if (res[0]==1 && res[1]==0 && res[2]==0 && res[3]==0 && res[4]==0){mensaje="LETRA Q";}
+        if (res[0]==1 && res[1]==0 && res[2]==0 && res[3]==0 && res[4]==1){mensaje="LETRA R";}
+        if (res[0]==1 && res[1]==0 && res[2]==0 && res[3]==1 && res[4]==1){mensaje="LETRA T";}
+        if (res[0]==1 && res[1]==0 && res[2]==1 && res[3]==0 && res[4]==0){mensaje="LETRA U";}
+        if (res[0]==1 && res[1]==0 && res[2]==1 && res[3]==0 && res[4]==1){mensaje="LETRA V";}
+        if (res[0]==1 && res[1]==0 && res[2]==1 && res[3]==1 && res[4]==0){mensaje="LETRA W";}
+        if (res[0]==1 && res[1]==0 && res[2]==1 && res[3]==1 && res[4]==1){mensaje="LETRA X";}
+        if (res[0]==1 && res[1]==1 && res[2]==0 && res[3]==0 && res[4]==0){mensaje="LETRA Y";}
         if (res[0]==1 && res[1]==1 && res[2]==0 && res[3]==0 && res[4]==1){mensaje="LETRA Z";}
         System.out.println(res[0]);
         System.out.println(res[1]);
