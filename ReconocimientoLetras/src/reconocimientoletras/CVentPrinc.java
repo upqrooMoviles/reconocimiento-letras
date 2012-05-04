@@ -90,6 +90,7 @@ public class CVentPrinc extends javax.swing.JFrame {
         });
 
         cmdReconocer.setText("Reconocer");
+        cmdReconocer.setEnabled(false);
         cmdReconocer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdReconocerActionPerformed(evt);
@@ -208,7 +209,7 @@ public class CVentPrinc extends javax.swing.JFrame {
         {
             for(int j=0;j<5;j++)
             {
-                System.out.print(matriz[i][j]+" ");
+                System.out.print(matriz[i][j]+",");
                 if(matriz[i][j]==1)
                 {      
                     modelo.setValueAt('#', i, j);
@@ -227,6 +228,8 @@ public class CVentPrinc extends javax.swing.JFrame {
     private void cmdEntrenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdEntrenarActionPerformed
         // TODO add your handling code here:
         neurona.Entrenar();
+        cmdReconocer.setEnabled(true);
+        cmdEntrenar.setEnabled(false);
     }//GEN-LAST:event_cmdEntrenarActionPerformed
 
     /**
