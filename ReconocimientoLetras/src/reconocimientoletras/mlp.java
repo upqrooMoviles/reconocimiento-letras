@@ -423,6 +423,7 @@ public class mlp {
 
         // save trained neural network
         myMlPerceptron.save("myMlPerceptron.nnet");
+        
     }
     public String provar(double[] t)
     {
