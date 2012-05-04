@@ -4,6 +4,7 @@
  */
 package reconocimientoletras;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,6 +17,7 @@ public class CVentPrinc extends javax.swing.JFrame {
      * Creates new form CVentPrinc
      */
     Dibujo objDibujo;
+    mlp neurona= new mlp();
     public CVentPrinc() {
         initComponents();
          objDibujo= new Dibujo(this.pnlEntradaDibujo);
@@ -38,6 +40,7 @@ public class CVentPrinc extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         dtgModelo = new javax.swing.JTable();
+        cmdEntrenar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,6 +122,13 @@ public class CVentPrinc extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(dtgModelo);
 
+        cmdEntrenar.setText("Entrenar");
+        cmdEntrenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdEntrenarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,7 +150,9 @@ public class CVentPrinc extends javax.swing.JFrame {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(378, 378, 378))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(cmdEntrenar))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -157,7 +169,9 @@ public class CVentPrinc extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdLimpiar)
                     .addComponent(cmdReconocer))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cmdEntrenar)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -169,6 +183,7 @@ public class CVentPrinc extends javax.swing.JFrame {
         pnlEntradaDibujo.repaint();
         objDibujo.limpiar();
         DefaultTableModel modelo= new DefaultTableModel();
+        dtgModelo.setModel(modelo);
     }//GEN-LAST:event_cmdLimpiarActionPerformed
 
     private void pnlEntradaDibujoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEntradaDibujoMousePressed
@@ -186,7 +201,9 @@ public class CVentPrinc extends javax.swing.JFrame {
         DefaultTableModel modelo=new DefaultTableModel();
         modelo.setColumnCount(5);
         modelo.setRowCount(7);
+        double vectorTest[]=new double[35];
         int matriz[][]=objDibujo.analizaGrafico();
+        int pos=0;
         for(int i=0;i<7;i++)
         {
             for(int j=0;j<5;j++)
@@ -197,11 +214,20 @@ public class CVentPrinc extends javax.swing.JFrame {
                     modelo.setValueAt('#', i, j);
                     
                 }
+                vectorTest[pos]=matriz[i][j];
+                pos++;
             }
             System.out.println();
         }
         dtgModelo.setModel(modelo);
+        JOptionPane.showMessageDialog(this, neurona.provar(vectorTest));
+        
     }//GEN-LAST:event_cmdReconocerActionPerformed
+
+    private void cmdEntrenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdEntrenarActionPerformed
+        // TODO add your handling code here:
+        neurona.Entrenar();
+    }//GEN-LAST:event_cmdEntrenarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,6 +271,7 @@ public class CVentPrinc extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdEntrenar;
     private javax.swing.JButton cmdLimpiar;
     private javax.swing.JButton cmdReconocer;
     private javax.swing.JTable dtgModelo;

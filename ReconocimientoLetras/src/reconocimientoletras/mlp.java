@@ -21,10 +21,10 @@ import org.neuroph.util.TransferFunctionType;
  */
 public class mlp {
     
-    public static void main(String[] args) {
+    public void Entrenar() {
 
-        TrainingSet trainingSet = new TrainingSet(49, 5);
-        /**trainingSet.addElement(new SupervisedTrainingElement(new double[]{0,0,1,0,0, //LETRA A
+        TrainingSet trainingSet = new TrainingSet(35, 5);
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{0,0,1,0,0, //LETRA A
                                                                           0,1,0,1,0,
                                                                           1,0,0,0,1,
                                                                           1,1,1,1,1,
@@ -45,7 +45,7 @@ public class mlp {
                                                                           1,0,0,0,0,
                                                                           1,0,0,0,0,
                                                                           1,1,1,1,1,}, new double[]{0,0,0,1,0}));
-        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,0, //LETRA D
+        /**trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,1,1,1,0, //LETRA D
                                                                           1,0,0,0,1,
                                                                           1,0,0,0,1,
                                                                           1,0,0,0,1,
@@ -208,7 +208,7 @@ public class mlp {
                                                                           1,1,1,1,1}, new double[]{1,1,0,0,1}));
         System.out.print("Comienza");
         // create multi layer perceptron
-        MultiLayerPerceptron myMlPerceptron = new MultiLayerPerceptron(TransferFunctionType.SGN, 49, 50, 5);
+        MultiLayerPerceptron myMlPerceptron = new MultiLayerPerceptron(TransferFunctionType.SIGMOID, 35, 700, 5);
         // learn the training set
         myMlPerceptron.learnInSameThread(trainingSet);
 
@@ -218,23 +218,20 @@ public class mlp {
 
         // save trained neural network
         myMlPerceptron.save("myMlPerceptron.nnet");
-
+    }
+    public String provar(double[] t)
+    {
         // load saved neural network
         NeuralNetwork loadedMlPerceptron = NeuralNetwork.load("myMlPerceptron.nnet");
 
         // test loaded neural network
         System.out.println("Testing loaded neural network");
-        double tes[]={1,1,1,1,1,1,1, //LETRA Z
-                                                                          0,0,0,0,0,1,0,
-                                                                          0,0,0,0,1,0,0,
-                                                                          0,0,0,1,0,0,0,
-                                                                          0,0,1,0,0,0,0,
-                                                                          0,1,0,0,0,0,0,
-                                                                          1,1,1,1,1,1,1};
+        double tes[]= t;
+        String mensaje="";
         double res[]=testNeuralNetwork(loadedMlPerceptron, tes);
-        if (res[0]==0 && res[1]==0 && res[2]==0 && res[3]==0 && res[4]==0){System.out.println("LETRA A");}
-        if (res[0]==0 && res[1]==0 && res[2]==0 && res[3]==0 && res[4]==1){System.out.println("LETRA B");}
-        if (res[0]==0 && res[1]==0 && res[2]==0 && res[3]==1 && res[4]==0){System.out.println("LETRA C");}
+        if (res[0]==0 && res[1]==0 && res[2]==0 && res[3]==0 && res[4]==0){mensaje="LETRA A";}
+        if (res[0]==0 && res[1]==0 && res[2]==0 && res[3]==0 && res[4]==1){mensaje="LETRA B";}
+        if (res[0]==0 && res[1]==0 && res[2]==0 && res[3]==1 && res[4]==0){mensaje="LETRA C";}
         if (res[0]==0 && res[1]==0 && res[2]==0 && res[3]==1 && res[4]==1){System.out.println("LETRA D");}
         if (res[0]==0 && res[1]==0 && res[2]==1 && res[3]==0 && res[4]==0){System.out.println("LETRA E");}
         if (res[0]==0 && res[1]==0 && res[2]==1 && res[3]==0 && res[4]==1){System.out.println("LETRA F");}
@@ -256,17 +253,18 @@ public class mlp {
         if (res[0]==1 && res[1]==0 && res[2]==1 && res[3]==1 && res[4]==0){System.out.println("LETRA W");}
         if (res[0]==1 && res[1]==0 && res[2]==1 && res[3]==1 && res[4]==1){System.out.println("LETRA X");}
         if (res[0]==1 && res[1]==1 && res[2]==0 && res[3]==0 && res[4]==0){System.out.println("LETRA Y");}
-        if (res[0]==1 && res[1]==1 && res[2]==0 && res[3]==0 && res[4]==1){System.out.println("LETRA Z");}
+        if (res[0]==1 && res[1]==1 && res[2]==0 && res[3]==0 && res[4]==1){mensaje="LETRA Z";}
         System.out.println(res[0]);
         System.out.println(res[1]);
         System.out.println(res[2]);
         System.out.println(res[3]);
         System.out.println(res[4]);
+        return mensaje;
     }      
     
     public static double[] testNeuralNetwork(NeuralNetwork neuralNet, double[] entrada) {
         double aux[]=new double[5];
-        
+           
             neuralNet.setInput(entrada);
             neuralNet.calculate();
             double[] networkOutput = neuralNet.getOutput();
