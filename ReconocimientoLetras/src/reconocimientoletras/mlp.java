@@ -10,6 +10,7 @@ import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.learning.SupervisedTrainingElement;
 import org.neuroph.core.learning.TrainingSet;
 import org.neuroph.nnet.MultiLayerPerceptron;
+import org.neuroph.nnet.learning.LMS;
 import org.neuroph.util.TransferFunctionType;
 
 
@@ -20,7 +21,7 @@ import org.neuroph.util.TransferFunctionType;
  */
 public class mlp {
     
-    public void Entrenar() {
+    public void Entrenar(double error, int iteraciones, int capas) {
 
         TrainingSet trainingSet = new TrainingSet(35, 5);
         trainingSet.addElement(new SupervisedTrainingElement(new double[]{0,0,1,0,0, //LETRA A
@@ -290,6 +291,14 @@ public class mlp {
                                                                           1,0,0,0,0,
                                                                           1,0,0,0,0,
                                                                           1,1,1,1,1}, new double[]{0,1,0,1,1}));
+        trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,0,0,0,0,
+                                                                        1,1,1,1,1}, new double[]{0,1,0,1,1}));
+        
         //*****************************************************************************************************************
         trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,0,0,0,1, //LETRA M
                                                                           1,1,0,1,1,
@@ -320,6 +329,7 @@ public class mlp {
                                                                         1,0,0,0,1,
                                                                         1,0,0,0,1}, new double[]{0,1,1,0,0}));
         //******************************************************************************************************************
+        /*
         trainingSet.addElement(new SupervisedTrainingElement(new double[]{1,0,0,0,1, //LETRA N
                                                                           1,1,0,0,1,
                                                                           1,0,1,0,1,
@@ -411,10 +421,13 @@ public class mlp {
                                                                           0,1,0,0,0,
                                                                           1,0,0,0,0,
                                                                           1,1,1,1,1}, new double[]{1,1,0,0,1}));
-        System.out.print("Comienza");
+        */System.out.print("Comienza");
         // create multi layer perceptron
-        MultiLayerPerceptron myMlPerceptron = new MultiLayerPerceptron(TransferFunctionType.SIGMOID, 35, 27, 5);
+        MultiLayerPerceptron myMlPerceptron = new MultiLayerPerceptron(TransferFunctionType.SIGMOID, 35, capas, 5);
         // learn the training set
+        ((LMS) myMlPerceptron.getLearningRule()).setMaxError(error);
+        ((LMS) myMlPerceptron.getLearningRule()).setMaxIterations(iteraciones);
+        ((LMS) myMlPerceptron.getLearningRule()).setLearningRate(0.5);
         myMlPerceptron.learnInSameThread(trainingSet);
 
         // test perceptron
