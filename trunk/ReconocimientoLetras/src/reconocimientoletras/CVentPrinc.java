@@ -168,6 +168,7 @@ public class CVentPrinc extends javax.swing.JFrame {
         // TODO add your handling code here:
         pnlEntradaDibujo.repaint();
         objDibujo.limpiar();
+        DefaultTableModel modelo= new DefaultTableModel();
     }//GEN-LAST:event_cmdLimpiarActionPerformed
 
     private void pnlEntradaDibujoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEntradaDibujoMousePressed
@@ -183,17 +184,18 @@ public class CVentPrinc extends javax.swing.JFrame {
     private void cmdReconocerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdReconocerActionPerformed
         // TODO add your handling code here:
         DefaultTableModel modelo=new DefaultTableModel();
-        modelo.setColumnCount(7);
+        modelo.setColumnCount(5);
         modelo.setRowCount(7);
         int matriz[][]=objDibujo.analizaGrafico();
         for(int i=0;i<7;i++)
         {
-            for(int j=0;j<7;j++)
+            for(int j=0;j<5;j++)
             {
                 System.out.print(matriz[i][j]+" ");
                 if(matriz[i][j]==1)
                 {      
-                    modelo.setValueAt("X", i, j);
+                    modelo.setValueAt('#', i, j);
+                    
                 }
             }
             System.out.println();
