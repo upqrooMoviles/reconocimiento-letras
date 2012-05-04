@@ -25,7 +25,7 @@ public class Dibujo {
     private int izquierda;
     private int derecha;
     protected int pixelMap[][] = new int[140][140];
-    private int matriz[][] = new int[7][7];
+    private int matriz[][] = new int[7][5];
 
     public Dibujo(JPanel dib) {
         pDibujo = dib;
@@ -35,7 +35,7 @@ public class Dibujo {
             }
         }
         for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 7; j++) {
+            for (int j = 0; j < 5; j++) {
                 matriz[i][j] = 0;
             }
         }
@@ -63,7 +63,7 @@ public class Dibujo {
             }
         }
         for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 7; j++) {
+            for (int j = 0; j < 5; j++) {
                 matriz[i][j] = 0;
             }
         }
@@ -78,17 +78,17 @@ public class Dibujo {
             grafico.drawLine(X, Y, x, y);
             X = x;
             Y = y;
-            pixelMap[Y][X] = 1;
-
+            if(X<140 && Y<140)
+                pixelMap[Y][X] = 1;
         }
     }
 
     public int[][] analizaGrafico() {
         encuentraBordes(140, 140);
-        arriba -= 1;
-        abajo += 1;
-        izquierda-=1;
-        derecha+=1;
+        arriba -= 3;
+        abajo += 3;
+        izquierda-=3;
+        derecha+=3;
         System.err.println("arriba: " + arriba + "  derecha: " + derecha + "  abajo: " + abajo + "  izquierda " + izquierda);
         pintarBordes();
         creaMatriz();
@@ -151,12 +151,12 @@ public class Dibujo {
         int h = abajo - arriba;
         int w = derecha - izquierda;
         int intH = (int) (h / 7);
-        int intW = (int) (w / 7);
+        int intW = (int) (w / 5);
         int auxIzq;
         System.out.println(intH + " " + intW);
         for (int i = 0; i < 7; i++) {
             auxIzq=izquierda;
-            for (int j = 0; j < 7; j++) {
+            for (int j = 0; j < 5; j++) {
                 boolean band = false;
                 for (int k = arriba; k < arriba + intH; k++) {
                     for (int l = auxIzq; l < auxIzq + intW; l++) {
@@ -168,9 +168,7 @@ public class Dibujo {
                         }
                     }
 
-                    if (band) {
-                        break;
-                    }
+                    
                 }
             auxIzq+=intW;
             }
@@ -178,5 +176,4 @@ public class Dibujo {
             
         }
     }
-
 }
